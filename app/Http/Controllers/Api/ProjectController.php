@@ -20,16 +20,16 @@ class ProjectController extends Controller
 
     public function show($slug)
     {
-        $projects = Project::all();
-        if ($projects) {
+        $project = Project::where('slug', $slug)->first();;
+        if ($project) {
             return response()->json([
                 'success' => true,
-                'projects' => $projects
+                'project' => $project
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'error' => 'No projects'
+                'error' => 'No project'
             ]);
         }
     }
