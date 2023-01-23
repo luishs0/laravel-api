@@ -17,4 +17,20 @@ class ProjectController extends Controller
             'results' => $projects
         ]);
     }
+
+    public function show($slug)
+    {
+        $projects = Project::all();
+        if ($projects) {
+            return response()->json([
+                'success' => true,
+                'projects' => $projects
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => 'No projects'
+            ]);
+        }
+    }
 }
